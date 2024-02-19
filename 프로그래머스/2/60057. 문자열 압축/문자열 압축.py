@@ -3,7 +3,7 @@ def compression(s, l):
     count = 1
     idx = l
     compressed = ''
-    while idx + l <= len(s):
+    for i in range(l, len(s), l):
         next = s[idx:idx+l]
         if next == now:
             count += 1
@@ -18,9 +18,6 @@ def compression(s, l):
     if count > 1:
         compressed += str(count)
     compressed += now
-    
-    if idx < len(s):
-        compressed += s[idx:]
     
     return compressed
 
