@@ -17,7 +17,7 @@ def compression(s, l):
     
     if count > 1:
         compressed += str(count)
-    compressed += next
+    compressed += now
     
     if idx < len(s):
         compressed += s[idx:]
