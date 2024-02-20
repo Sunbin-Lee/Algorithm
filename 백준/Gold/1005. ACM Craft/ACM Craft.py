@@ -6,12 +6,10 @@ for _ in range(T):
     times = [0] + list(map(int, input().split()))
 
     graph = [[] for _ in range(N+1)]
-    graph_reverse = [[] for _ in range(N+1)]
     indegree = [0 for _ in range(N+1)]
     for _ in range(K):
         X, Y = map(int, input().split())
         graph[X].append(Y)
-        graph_reverse[Y].append(X)
         indegree[Y] += 1
 
     W = int(input())
