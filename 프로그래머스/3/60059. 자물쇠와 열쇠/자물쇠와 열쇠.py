@@ -24,7 +24,7 @@ def solution(key, lock):
     for _ in range(4):
         key = rotate_90(key, M)
         for start_i in range(N-M+1,2*N):
-            for start_j in range(N-M,2*N):
+            for start_j in range(N-M+1,2*N):
                 
                 for i in range(M):
                     for j in range(M):
