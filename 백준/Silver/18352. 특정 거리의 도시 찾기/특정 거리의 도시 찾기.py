@@ -1,38 +1,27 @@
 from collections import deque
 
 N, M, K, X = map(int, input().split())
-
 graph = [[] for _ in range(N+1)]
 for _ in range(M):
     a, b = map(int, input().split())
     graph[a].append(b)
 
-q = deque()
-q.append((X, 0))
-
-visited = [0 for _ in range(N+1)]
-
-answer = []
+dist = [1e9 for _ in range(N+1)]
+dist[X] = 0
+q = deque([X])
 while q:
-    now, dist = q.popleft()
-    visited[now] = 1
-
-    if dist == K:
-        answer.append(now)
-    elif dist > K:
-        break
-
+    now = q.popleft()
     for node in graph[now]:
-        if visited[node] == 1:
+        if dist[node] != 1e9:
             continue
+        dist[node] = dist[now] + 1
+        q.append(node)
 
-        q.append((node, dist + 1))
-        visited[node] = 1
+ans = False
+for n in range(1, N+1):
+    if dist[n] == K:
+        print(n)
+        ans = True
 
-# print(answer)
-if not answer:
+if not ans:
     print(-1)
-else:
-    answer.sort()
-    for node in answer:
-        print(node)
