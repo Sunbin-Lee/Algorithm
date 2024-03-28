@@ -1,13 +1,18 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        def recursion(now, visited):
+            if len(now) == len(nums):
+                ans.append(now)
+                return
+            
+            for i in range(len(nums)):
+                if visited[i] == 0:
+                    visited[i] = 1
+                    recursion(now+[nums[i]], visited)
+                    visited[i] = 0
+                    
         ans = []
-        self.recursion([], nums, ans)
+        recursion([], [0 for _ in range(len(nums))])
         return ans
     
-    def recursion(self, now, nums, ans):
-        if len(nums) == 1:
-            ans.append(now+[nums[0]])
-            return
         
-        for i in range(len(nums)):
-            self.recursion(now+[nums[i]], nums[:i]+nums[i+1:], ans)
